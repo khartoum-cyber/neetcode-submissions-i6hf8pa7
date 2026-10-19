@@ -1,0 +1,23 @@
+public class Solution 
+{
+    public bool MergeTriplets(int[][] triplets, int[] target) 
+    {
+        HashSet<int> good = new();
+
+        foreach(var t in triplets)
+        {
+            if(t[0] > target[0] || t[1] > target[1] || t[2] > target[2])
+                continue;
+            
+            for(int c = 0; c < 3; c++)
+            {
+                if(t[c] == target[c])
+                {
+                    good.Add(c);
+                }
+            }
+        }
+
+        return good.Count == 3;
+    }
+}
